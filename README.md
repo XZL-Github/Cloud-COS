@@ -40,7 +40,6 @@ appsettings.json
             CosXmlServer cosXmlServer,
             IOptions<CosXmlOptions> cosXmlOptions) 
         {
-            _jobContextOptions = jobContextOptions;
             _cosXmlServer = cosXmlServer;
             _cosXmlOptions = cosXmlOptions.Value;
             _logger = logger;
