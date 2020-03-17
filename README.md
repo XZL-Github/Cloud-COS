@@ -44,6 +44,16 @@ appsettings.json
             _cosXmlOptions = cosXmlOptions.Value;
             _logger = logger;
         }
+          var retryPolicy = Policy.Handle<COSXML.CosException.CosServerException>()
+                .WaitAndRetry(new List<TimeSpan>()
+                {
+                    TimeSpan.FromSeconds(1),
+                    TimeSpan.FromSeconds(3),
+                    TimeSpan.FromSeconds(5),
+                }, (ex, dt) =>
+                {
+                    Console.WriteLine($"{DateTime.Now} {ex.Message}  {dt} ");
+                });
           var jsonContent = JsonConvert.SerializeObject(longTermJobObjectModel, _serializerSetting);
           try
                 {
@@ -54,7 +64,10 @@ appsettings.json
                     //设置签名有效时长
                     request.SetSign(TimeUtils.GetCurrentTime(TimeUnit.SECONDS), 60 * 60 * 5);
                     //执行请求
-                    PutObjectResult result = _cosXmlServer.PutObject(request);
+                    retryPolicy.Execute(() =>
+                    {
+                        PutObjectResult result = _cosXmlServer.PutObject(request);
+                    });
 
                 }
                 catch (COSXML.CosException.CosServerException serverEx)
