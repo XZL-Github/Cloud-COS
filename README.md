@@ -64,3 +64,5 @@ appsettings.json
                     return HandleResult.Failed(ErrorBehavior.Retry, serverEx.GetInfo());
                 }
 ```
+![Image text](https://github.com/XZL-Github/images/blob/master/1.png)
+![Image text](https://github.com/XZL-Github/images/blob/master/2.png)
