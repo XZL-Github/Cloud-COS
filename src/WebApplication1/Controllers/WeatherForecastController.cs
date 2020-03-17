@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using Polly;
 
 namespace WebApplication1.Controllers
 {
@@ -43,6 +44,16 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
+            var retryPolicy = Policy.Handle<COSXML.CosException.CosServerException>()
+                .WaitAndRetry(new List<TimeSpan>()
+                {
+                    TimeSpan.FromSeconds(1),
+                    TimeSpan.FromSeconds(3),
+                    TimeSpan.FromSeconds(5),
+                }, (ex, dt) =>
+                {
+                    Console.WriteLine($"{DateTime.Now} {ex.Message}  {dt} ");
+                });
             LongTermJobObjectModel longTermJobObjectModel = new LongTermJobObjectModel() 
             { 
                 Id=12,
@@ -50,6 +61,7 @@ namespace WebApplication1.Controllers
                 Age=20,
                 Remark="测试一下"
             };
+
 
             var jsonContent = JsonConvert.SerializeObject(longTermJobObjectModel, _serializerSetting);
             try
@@ -61,7 +73,10 @@ namespace WebApplication1.Controllers
                 //设置签名有效时长
                 request.SetSign(TimeUtils.GetCurrentTime(TimeUnit.SECONDS), 60 * 60 * 5);
                 //执行请求
-                PutObjectResult result = _cosXmlServer.PutObject(request);
+                retryPolicy.Execute(() =>
+                {
+                    PutObjectResult result = _cosXmlServer.PutObject(request);
+                });
                 return Ok();
             }
             catch (COSXML.CosException.CosServerException serverEx)
@@ -79,7 +94,10 @@ namespace WebApplication1.Controllers
             //})
             //.ToArray();
         }
+
+        
     }
+
     public class LongTermJobObjectModel
     {
         public int Id { get; set; }
