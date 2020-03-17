@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hunter.Tencent.COSSDK", "Hunter.Tencent.COSSDK.csproj", "{F23137D1-9634-4EF3-B204-2535F10EC8EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hunter.Tencent.COSSDK", "src\Cloud-COS\Hunter.Tencent.COSSDK.csproj", "{39549617-0E88-4DCC-8DCF-8DF90B03ACC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "..\WebApplication1\WebApplication1.csproj", "{1BB60EE8-5D62-4102-93A6-EE76B6977852}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication1", "src\WebApplication1\WebApplication1.csproj", "{AB3FFD26-016B-4C51-8E75-1515F823813D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F23137D1-9634-4EF3-B204-2535F10EC8EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F23137D1-9634-4EF3-B204-2535F10EC8EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F23137D1-9634-4EF3-B204-2535F10EC8EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F23137D1-9634-4EF3-B204-2535F10EC8EA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1BB60EE8-5D62-4102-93A6-EE76B6977852}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1BB60EE8-5D62-4102-93A6-EE76B6977852}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1BB60EE8-5D62-4102-93A6-EE76B6977852}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1BB60EE8-5D62-4102-93A6-EE76B6977852}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39549617-0E88-4DCC-8DCF-8DF90B03ACC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39549617-0E88-4DCC-8DCF-8DF90B03ACC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39549617-0E88-4DCC-8DCF-8DF90B03ACC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39549617-0E88-4DCC-8DCF-8DF90B03ACC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB3FFD26-016B-4C51-8E75-1515F823813D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB3FFD26-016B-4C51-8E75-1515F823813D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB3FFD26-016B-4C51-8E75-1515F823813D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB3FFD26-016B-4C51-8E75-1515F823813D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
